@@ -33,7 +33,7 @@ public class PersonController {
 		try {
 			return ResponseEntity.ok().body(repository.getPerson(id));
 		} catch (EmptyResultDataAccessException erdae) {
-			log.error("Could not find person with id = {}", id);
+			log.info("Could not find person with id = {}", id);
 			return ResponseEntity.notFound().build();
 		}
 	}
