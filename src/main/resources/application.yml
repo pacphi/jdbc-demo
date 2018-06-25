@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure: 
+        include: health,info,env
+        
+logging:
+  level:
+    io.pivotal.jdbc: INFO
+    
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5 
