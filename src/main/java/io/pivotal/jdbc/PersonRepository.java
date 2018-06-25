@@ -33,7 +33,7 @@ public class PersonRepository {
 		UUID key = UUID.randomUUID();
 		template
 			.update(sql, 
-					UUID.randomUUID(), 
+					key, 
 					person.getFirstName(), 
 					person.getLastName(), 
 					person.getAge());
