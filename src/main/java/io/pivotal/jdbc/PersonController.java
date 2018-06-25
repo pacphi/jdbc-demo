@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @AllArgsConstructor
 public class PersonController {
@@ -27,10 +30,12 @@ public class PersonController {
 	
 	@GetMapping("/person/{id}")
 	public ResponseEntity<Person> getPerson(@PathVariable("id") UUID id) {
-		Person result = repository.getPerson(id);
-		return result != null 
-				? ResponseEntity.ok().body(result)
-						: ResponseEntity.notFound().build();
+		try {
+			return ResponseEntity.ok().body(repository.getPerson(id));
+		} catch (EmptyResultDataAccessException erdae) {
+			log.error("Could not find person with id = {}", id);
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PostMapping("/person")
