@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,11 +41,16 @@ public class PersonController {
 	
 	@PostMapping("/person")
 	public ResponseEntity<String> savePerson(@RequestBody Person person) {
-		URI uri = 
-				UriComponentsBuilder
-					.fromPath("/person/{id}")
-					.buildAndExpand(repository.savePerson(person))
-					.toUri();
-		return ResponseEntity.created(uri).build();
+		try {
+			URI uri = 
+					UriComponentsBuilder
+						.fromPath("/person/{id}")
+						.buildAndExpand(repository.savePerson(person))
+						.toUri();
+			return ResponseEntity.created(uri).build();
+		} catch (DataIntegrityViolationException dive) {
+			log.info("Could not save person! \n Exception -> \n\t {}", dive.getMessage());
+			return ResponseEntity.badRequest().build();
+		}
 	}
 }
