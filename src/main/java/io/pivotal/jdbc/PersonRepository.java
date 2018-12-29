@@ -6,23 +6,25 @@ import java.util.stream.Stream;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import lombok.AllArgsConstructor;
-
 @Repository
-@AllArgsConstructor
 public class PersonRepository {
 
 	private final JdbcTemplate template;
 	
+	public PersonRepository(JdbcTemplate template) {
+		super();
+		this.template = template;
+	}
+
 	public Stream<Person> allPeople() {
 		String sql = "SELECT * FROM people";
 		return template
 		        .query(sql, (rs, rowNum) ->
 		        	Person.builder()
-			            .id(UUID.fromString(rs.getString("id")))
-			        	.firstName(rs.getString("first_name"))
-			            .lastName(rs.getString("last_name"))
-			            .age(rs.getInt("age"))
+			            .withId(UUID.fromString(rs.getString("id")))
+			        	.withFirstName(rs.getString("first_name"))
+			            .withLastName(rs.getString("last_name"))
+			            .withAge(rs.getInt("age"))
 			            .build()
 	            )
 		        .stream();
@@ -45,13 +47,12 @@ public class PersonRepository {
 		return template
 				.queryForObject(sql, new Object[] { personId }, (rs, rownNum) ->
 					Person.builder()
-			            .id(UUID.fromString(rs.getString("id")))
-			        	.firstName(rs.getString("first_name"))
-			            .lastName(rs.getString("last_name"))
-			            .age(rs.getInt("age"))
+			            .withId(UUID.fromString(rs.getString("id")))
+			        	.withFirstName(rs.getString("first_name"))
+			            .withLastName(rs.getString("last_name"))
+			            .withAge(rs.getInt("age"))
 			            .build()
 				);
-		
 	}
 
 }

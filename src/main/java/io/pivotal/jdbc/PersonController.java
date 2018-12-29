@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +16,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
-@AllArgsConstructor
 public class PersonController {
 
+	private static Logger log = LoggerFactory.getLogger(PersonController.class);
+	
 	private final PersonRepository repository;
 	
+	public PersonController(PersonRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
 	@GetMapping("/person")
 	public ResponseEntity<Stream<Person>> listPeople() {
 		return ResponseEntity.ok().body(repository.allPeople());
