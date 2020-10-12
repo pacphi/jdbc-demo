@@ -34,7 +34,7 @@ dependencies {
 	compile('org.flywaydb:flyway-core:6.5.1')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('org.postgresql:postgresql:42.2.14')
+	runtime('org.postgresql:postgresql:42.2.17')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('com.opentable.components:otj-pg-embedded:0.13.3')
