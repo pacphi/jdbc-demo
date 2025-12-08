@@ -31,7 +31,7 @@ bootRun {
 dependencies {
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.flywaydb:flyway-core:11.18.0')
+	compile('org.flywaydb:flyway-core:11.19.0')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.postgresql:postgresql:42.7.8')
