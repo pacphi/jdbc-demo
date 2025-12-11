@@ -1,7 +1,7 @@
 package io.pivotal.jdbc;
 
 import java.util.UUID;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 public class Person {
 
