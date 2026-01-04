@@ -9,8 +9,8 @@ This is a simple experiment to test a [Spring Boot/MVC](https://docs.spring.io/s
 * An account with [Space Developer role](https://docs.cloudfoundry.org/concepts/roles.html#roles) access on a Cloud Foundry foundation, e.g., [Pivotal Web Services](https://run.pivotal.io)
 * [CF CLI](https://github.com/cloudfoundry/cli#downloads) 6.37.0 or better if you want to push the application to a Cloud Foundry (CF) instance
 * [httpie](https://httpie.org/#installation) 0.9.9 or better to simplify interaction with API endpoints
-* Java [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 1.8u172 or better to compile and run the code
-* [Gradle](https://gradle.org/releases/) 4.8 or better to build and package source code
+* Java [JDK](https://adoptium.net/) 21 or better to compile and run the code
+* [Gradle](https://gradle.org/releases/) 9.1 or better to build and package source code (wrapper included)
 * Docker for [Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac) or [Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) for spinning up a local instance of Postgres and Adminer (a database administration interface)
 
 
