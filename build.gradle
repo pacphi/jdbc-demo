@@ -42,7 +42,7 @@ dependencies {
 	implementation('org.flywaydb:flyway-core:11.20.0')
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	runtimeOnly('org.postgresql:postgresql:42.7.8')
+	runtimeOnly('org.postgresql:postgresql:42.7.9')
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('com.opentable.components:otj-pg-embedded:1.1.1')
