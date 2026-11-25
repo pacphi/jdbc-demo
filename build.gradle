@@ -46,5 +46,5 @@ dependencies {
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('com.opentable.components:otj-pg-embedded:1.1.1')
-	testImplementation('com.h2database:h2:2.4.240')
+	testImplementation('com.h2database:h2:2.5.252')
 }
